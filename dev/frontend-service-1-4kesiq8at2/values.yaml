@@ -10,7 +10,7 @@ service:
   type:
   - ClusterIP
   - NodePort
-namespace: -@namespace@-
+namespace: test-dev
 pvc:
   name: pvc-frontend-service-1-4kesiq8at2
   storageClass: tlc-block-sc
@@ -20,15 +20,15 @@ deployment:
   app:
     name: frontend-service-1-4kesiq8at2
     type: react
-  replicas: -@replicas@-
+  replicas: 1
   update:
     type: RollingUpdate
   repo:
-    url: -@imageRepoName@-
+    url: turaco-dev-registry.turacocloud.com/dev-turaco-workspace-268/turaco
   image:
     name: frontend-service-1-4kesiq8at2
     tag: lastest
-    secret: -@repoSecret@-
+    secret: regsecret
   container:
     name: frontend-service-1-4kesiq8at2
     port: 80
@@ -36,11 +36,11 @@ deployment:
     name: pvc-frontend-service-1-4kesiq8at2
   resource:
     request:
-      memory: -@requestMemory@-
-      cpu: -@requestCpu@-
+      memory: 250Mi
+      cpu: 0.25
     limits:
-      memory: -@limitsMemory@-
-      cpu: -@limitsCpu@-
+      memory: 0Mi
+      cpu: 0
   backing: 
   secret:
     name: []
@@ -48,7 +48,7 @@ deployment:
     name: []
   hpa:
     name: hpa-frontend-service-1-4kesiq8at2
-    minReplicas: -@minReplicas@-
-    maxReplicas: -@maxReplicas@-
-    cpu: -@cpuAutoScale@-
+    minReplicas: 1
+    maxReplicas: 1
+    cpu: 70
     memory: -@memAutoScale@-
