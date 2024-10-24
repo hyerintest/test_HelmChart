@@ -20,14 +20,14 @@ deployment:
   app:
     name: frontend-service-1-4kesiq8at2
     type: react
-  replicas: 1
+  replicas: 2
   update:
     type: RollingUpdate
   repo:
     url: turaco-dev-registry.turacocloud.com/dev-turaco-workspace-268/turaco
   image:
     name: frontend-service-1-4kesiq8at2
-    tag: "7777-4574-frontend-service-1-4kesiq8at2-3149c51"
+    tag: lastest
     secret: regsecret
   container:
     name: frontend-service-1-4kesiq8at2
@@ -49,6 +49,6 @@ deployment:
   hpa:
     name: hpa-frontend-service-1-4kesiq8at2
     minReplicas: 1
-    maxReplicas: 1
+    maxReplicas: 2
     cpu: 70
     memory: -@memAutoScale@-
