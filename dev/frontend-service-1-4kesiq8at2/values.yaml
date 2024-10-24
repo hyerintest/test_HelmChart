@@ -27,7 +27,7 @@ deployment:
     url: turaco-dev-registry.turacocloud.com/dev-turaco-workspace-268/turaco
   image:
     name: frontend-service-1-4kesiq8at2
-    tag: 7777-4574-frontend-service-1-4kesiq8at2-3149c51
+    tag: "7777-4574-frontend-service-1-4kesiq8at2-3149c51"
     secret: regsecret
   container:
     name: frontend-service-1-4kesiq8at2
