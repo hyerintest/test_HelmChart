@@ -1,0 +1,54 @@
+service:
+  port:
+    name: http
+    l4_protocol: TCP
+    port: 80
+    targetPort: 80
+  label: frontend-service-1-4kesiq8at2
+  name: frontend-service-1-4kesiq8at2
+  selector: frontend-service-1-4kesiq8at2
+  type:
+  - ClusterIP
+  - NodePort
+namespace: -@namespace@-
+pvc:
+  name: pvc-frontend-service-1-4kesiq8at2
+  storageClass: tlc-block-sc
+  size: 5Gi
+  accessMode: ReadWriteOnce
+deployment:
+  app:
+    name: frontend-service-1-4kesiq8at2
+    type: react
+  replicas: -@replicas@-
+  update:
+    type: RollingUpdate
+  repo:
+    url: -@imageRepoName@-
+  image:
+    name: frontend-service-1-4kesiq8at2
+    tag: lastest
+    secret: -@repoSecret@-
+  container:
+    name: frontend-service-1-4kesiq8at2
+    port: 80
+  volume:
+    name: pvc-frontend-service-1-4kesiq8at2
+  resource:
+    request:
+      memory: -@requestMemory@-
+      cpu: -@requestCpu@-
+    limits:
+      memory: -@limitsMemory@-
+      cpu: -@limitsCpu@-
+  backing: 
+  secret:
+    name: []
+  configmap:
+    name: []
+  hpa:
+    name: hpa-frontend-service-1-4kesiq8at2
+    minReplicas: -@minReplicas@-
+    maxReplicas: -@maxReplicas@-
+    cpu: -@cpuAutoScale@-
+    memory: -@memAutoScale@-
